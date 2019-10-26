@@ -1,4 +1,4 @@
-package com.jtjc.envirosense;
+package com.jtjc.EnviroSense;
 
 import androidx.appcompat.app.AppCompatActivity;
 
