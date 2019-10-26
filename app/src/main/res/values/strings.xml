@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">EnviroSense</string>
+    <string name="P">Pressure:</string>
+    <string name="U">UV Intensity:</string>
+    <string name="T">Temperature:</string>
+    <string name="TV">TVoc:</string>
+    <string name="EC">ECO2:</string>
+    <string name="AL">ALL</string>
+    <string name="E">EnviroSense</string>
+    <string name="S">Status:</string>
 </resources>

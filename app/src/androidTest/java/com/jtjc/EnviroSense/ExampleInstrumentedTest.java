@@ -1,4 +1,4 @@
-package com.jtjc.EnviroSense;
+package com.jtjc.envirosense;
 
 import android.content.Context;
 
@@ -22,6 +22,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
 
-        assertEquals("com.jtjc.EnviroSense", appContext.getPackageName());
+        assertEquals("com.jtjc.envirosense", appContext.getPackageName());
     }
 }

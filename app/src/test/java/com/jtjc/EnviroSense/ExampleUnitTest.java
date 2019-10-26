@@ -1,4 +1,4 @@
-package com.jtjc.EnviroSense;
+package com.jtjc.envirosense;
 
 import org.junit.Test;
 
