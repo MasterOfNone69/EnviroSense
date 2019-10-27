@@ -1,4 +1,4 @@
-package com.jtjc.envirosense;
+package com.jtjc.EnviroSense;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -13,6 +13,7 @@ public class TempGraph extends AppCompatActivity {
 
     @Override
     protected void onStart(){
+        setTheme(R.style.AppTheme);
         super.onStart();
         setContentView(R.layout.graph_temp);
         GraphView graph = (GraphView) findViewById(R.id.graph);
