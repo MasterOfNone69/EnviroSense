@@ -27,6 +27,7 @@ public class TempGraph extends AppCompatActivity {
 
     @Override
     protected void onStart(){
+        setTheme(R.style.AppTheme);
         super.onStart();
         setContentView(R.layout.graph_temp);
         text = findViewById(R.id.resuming);
