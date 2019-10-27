@@ -62,5 +62,12 @@ public class TempGraph extends AppCompatActivity {
         };
         handler.post(updateTimer);
     }
+
+    @Override
+    protected void onPause() {
+        handler.removeCallbacks(pointTimer);
+        handler.removeCallbacks(updateTimer);
+        super.onPause();
+    }
 }
 
