@@ -1,4 +1,4 @@
-package com.jtjc.EnviroSense;
+package com.jtjc.EnviroSense.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,6 +10,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
+import com.jtjc.EnviroSense.R;
 import com.jtjc.EnviroSense.graphs.UpdatedLineGraph;
 
 public class TempGraph extends AppCompatActivity {

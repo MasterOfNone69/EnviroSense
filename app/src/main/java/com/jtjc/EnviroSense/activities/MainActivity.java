@@ -1,10 +1,8 @@
-package com.jtjc.EnviroSense;
+package com.jtjc.EnviroSense.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -16,15 +14,17 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.jjoe64.graphview.GraphView;
+import com.jtjc.EnviroSense.R;
+import com.jtjc.EnviroSense.SensorData;
+import com.jtjc.EnviroSense.SensorDataType;
 
-import java.sql.Ref;
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     DatabaseReference databaseSensor;
     GraphView graphView;
-    List<Sensor> sensorList;
+    List<SensorData> sensorDataList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toast.makeText(MainActivity.this,"Firebase Connection Success", Toast.LENGTH_LONG).show();
-        sensorList = new ArrayList<>();
+        sensorDataList = new ArrayList<>();
         databaseSensor = FirebaseDatabase.getInstance().getReference("esp8266airsensor");
         graphView = (GraphView)findViewById(R.id.graph);
 
@@ -45,16 +45,13 @@ public class MainActivity extends AppCompatActivity {
         databaseSensor.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                sensorList.clear();
+                sensorDataList.clear();
                 for(DataSnapshot sensorSnapshot : dataSnapshot.getChildren()){
-                    Sensor sensor = sensorSnapshot.getValue(Sensor.class);
+                    SensorData sensorData = sensorSnapshot.getValue(SensorData.class);
 
-                    sensorList.add(sensor);
-
+                    sensorDataList.add(sensorData);
                 }
-                SensorList adapter = new SensorList(MainActivity.this, sensorList);
-
-
+                SensorList adapter = new SensorList(MainActivity.this, sensorDataList);
             }
 
             @Override
@@ -65,12 +62,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void startGraph(View view) {
-        android.content.Intent graph1 = new Intent(this, TempGraph.class);
+        Intent graph1 = new Intent(this, TempGraph.class);
         startActivity(graph1);
     }
 
     public void startUVGraph(View view) {
-
+        Intent g = new Intent(this, GraphViewActivity.class);
+        g.putExtra("DATA_TYPE", SensorDataType.UV.name);
+        startActivity(g);
     }
 }
 
