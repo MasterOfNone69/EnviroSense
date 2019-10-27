@@ -47,9 +47,9 @@ public class MainActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 sensorDataList.clear();
                 for(DataSnapshot sensorSnapshot : dataSnapshot.getChildren()){
-                    SensorData sensorData = sensorSnapshot.getValue(SensorData.class);
+//                    SensorData sensorData = sensorSnapshot.getValue(SensorData.class);
 
-                    sensorDataList.add(sensorData);
+//                    sensorDataList.add(sensorData);
                 }
                 SensorList adapter = new SensorList(MainActivity.this, sensorDataList);
             }
@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public void startGraph(View view) {
+    public void startTemp(View view) {
         Intent graph1 = new Intent(this, TempGraph.class);
         startActivity(graph1);
     }
@@ -69,6 +69,24 @@ public class MainActivity extends AppCompatActivity {
     public void startUVGraph(View view) {
         Intent g = new Intent(this, GraphViewActivity.class);
         g.putExtra("DATA_TYPE", SensorDataType.UV.name);
+        startActivity(g);
+    }
+
+    public void startECO2(View view) {
+        Intent g = new Intent(this, GraphViewActivity.class);
+        g.putExtra("DATA_TYPE", SensorDataType.CO2.name);
+        startActivity(g);
+    }
+
+    public void startTVOC(View view) {
+        Intent g = new Intent(this, GraphViewActivity.class);
+        g.putExtra("DATA_TYPE", SensorDataType.TVOC.name);
+        startActivity(g);
+    }
+
+    public void startPRESSURE(View view) {
+        Intent g = new Intent(this, GraphViewActivity.class);
+        g.putExtra("DATA_TYPE", SensorDataType.PRESSURE.name);
         startActivity(g);
     }
 }

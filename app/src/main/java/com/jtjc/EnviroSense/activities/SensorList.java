@@ -35,9 +35,9 @@ public class SensorList extends ArrayAdapter<SensorData> {
         GraphView co2 = (GraphView) listViewItem.findViewById(R.id.graph);
         SensorData sensorData = sensorDataList.get(position);
 
-        TempGraph co2Graph = new TempGraph();
-        co2Graph.onStart();
-        co2Graph.sensorData = Double.parseDouble(sensorData.getCo2Sensor());
+//        TempGraph co2Graph = new TempGraph();
+//        co2Graph.onStart();
+//        co2Graph.sensorData = Double.parseDouble(sensorData.getCo2Sensor());
 
         return listViewItem;
     }

@@ -43,18 +43,18 @@ public class UpdatedLineGraph {
     }
 
     public void updateGraph() {
-        if(graphDirty) {
-            xBounds = getDefaultXBounds();
-            yBounds = getDefaultYBounds();
-            double xDifference = xBounds.second - xBounds.first;
-            double yDifference = yBounds.second - yBounds.first;
-            graphView.getViewport().setMinX(xBounds.first - xDifference * xMarginRatio);
-            graphView.getViewport().setMaxX(xBounds.second + xDifference * xMarginRatio);
-            graphView.getViewport().setMinY(yBounds.first - yDifference * yMarginRatio);
-            graphView.getViewport().setMaxY(yBounds.second + yDifference * yMarginRatio);
+//        if(graphDirty) {
+        xBounds = getDefaultXBounds();
+        yBounds = getDefaultYBounds();
+        double xDifference = xBounds.second - xBounds.first;
+        double yDifference = yBounds.second - yBounds.first;
+        graphView.getViewport().setMinX(xBounds.first - xDifference * xMarginRatio);
+        graphView.getViewport().setMaxX(xBounds.second + xDifference * xMarginRatio);
+        graphView.getViewport().setMinY(yBounds.first - yDifference * yMarginRatio);
+        graphView.getViewport().setMaxY(yBounds.second + yDifference * yMarginRatio);
 
-            graphDirty = false;
-        }
+        graphDirty = false;
+//        }
     }
 
     public void addPoint(DataPoint point) {
@@ -71,6 +71,9 @@ public class UpdatedLineGraph {
         for (Iterator<DataPoint> it = lineGraph.getValues(xBounds.first, xBounds.second); it.hasNext(); ) {
             DataPoint p = it.next();
             yVals.add(p.getY());
+        }
+        if(yVals.isEmpty()) {
+            return new Pair<>(0.0, 0.0);
         }
         double minY = Collections.min(yVals);
         double maxY = Collections.max(yVals);

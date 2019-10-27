@@ -5,7 +5,9 @@ public enum SensorDataType {
     PRESSURE("Pressure"),
     TEMPERATURE("TEMP"),
     TVOC("TVOC"),
-    UV("UV");
+    UV("UV"),
+    DEVICE("device"),
+    TIMESTAMP("timestamp");
 
     public final String name;
 
