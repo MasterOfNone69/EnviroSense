@@ -6,6 +6,7 @@ import android.os.Handler;
 import android.util.Log;
 import android.widget.TextView;
 
+import com.google.firebase.database.DatabaseReference;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
@@ -15,11 +16,13 @@ public class TempGraph extends AppCompatActivity {
 
     private final Handler handler = new Handler();
     private GraphView graph;
+    DatabaseReference databaseSensor;
     private TextView text;
     private UpdatedLineGraph theGraph;
     private LineGraphSeries<DataPoint> series;
     private Runnable pointTimer;
     private Runnable updateTimer;
+    protected double sensorData;
     private double counter = 5;
 
     @Override
@@ -29,11 +32,7 @@ public class TempGraph extends AppCompatActivity {
         text = findViewById(R.id.resuming);
         graph = findViewById(R.id.graph);
         series = new LineGraphSeries<>(new DataPoint[]{
-            new DataPoint(0,1),
-            new DataPoint(1, 5),
-            new DataPoint(2, 3),
-            new DataPoint(3, 2),
-            new DataPoint(4, 6)
+            new DataPoint(0,0)
         });
         theGraph = new UpdatedLineGraph(graph, series);
     }
@@ -44,9 +43,9 @@ public class TempGraph extends AppCompatActivity {
         pointTimer = new Runnable() {
             @Override
             public void run() {
-                DataPoint d = new DataPoint(counter, Math.random() * 5 - Math.random() * 5);
+                DataPoint d = new DataPoint(counter, sensorData);
                 counter += 1;
-                Log.d("new point added", d.toString());
+                //Log.d("new point added", d.toString());
                 theGraph.addPoint(d);
                 handler.postDelayed(this, 1000);
             }
