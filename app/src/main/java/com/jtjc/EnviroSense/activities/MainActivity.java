@@ -62,8 +62,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void startTemp(View view) {
-        Intent graph1 = new Intent(this, TempGraph.class);
-        startActivity(graph1);
+        Intent g = new Intent(this, GraphViewActivity.class);
+        g.putExtra("DATA_TYPE", SensorDataType.TEMPERATURE.name);
+        startActivity(g);
     }
 
     public void startUVGraph(View view) {

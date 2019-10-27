@@ -77,9 +77,9 @@ public class UpdatedLineGraph {
         }
         double minY = Collections.min(yVals);
         double maxY = Collections.max(yVals);
-        if(yBounds != null && minY > yBounds.first && maxY < yBounds.second && maxY - minY >= (yBounds.second - yBounds.first) * viewportHeightShrinkThreshold) {
-            return yBounds;
-        }
+//        if(yBounds != null && minY > yBounds.first && maxY < yBounds.second && maxY - minY >= (yBounds.second - yBounds.first) * viewportHeightShrinkThreshold) {
+//            return yBounds;
+//        }
         return new Pair<>(minY, maxY);
     }
 }
