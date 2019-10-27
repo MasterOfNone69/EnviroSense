@@ -1,6 +1,8 @@
 package com.jtjc.EnviroSense;
 
-public class Sensor {
+import androidx.annotation.NonNull;
+
+public class SensorData {
     String co2Sensor;
     String pressureSensor;
     String tempSensor;
@@ -9,11 +11,11 @@ public class Sensor {
     String deviceNode;
     String timeStamp;
 
-    public Sensor(){
+    public SensorData(){
 
     }
 
-    public Sensor(String co2Sensor, String pressureSensor, String tempSensor, String tvocSensor, String uvSensor, String deviceNode, String timeStamp) {
+    public SensorData(String co2Sensor, String pressureSensor, String tempSensor, String tvocSensor, String uvSensor, String deviceNode, String timeStamp) {
         this.co2Sensor = co2Sensor;
         this.pressureSensor = pressureSensor;
         this.tempSensor = tempSensor;
@@ -49,5 +51,11 @@ public class Sensor {
 
     public String getTimeStamp() {
         return timeStamp;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return String.format("(%s, %s, %s, %s, %s, %s, %s)", co2Sensor, pressureSensor, tempSensor, tvocSensor, uvSensor, deviceNode, timeStamp);
     }
 }

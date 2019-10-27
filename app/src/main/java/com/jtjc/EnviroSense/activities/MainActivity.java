@@ -68,5 +68,9 @@ public class MainActivity extends AppCompatActivity {
         android.content.Intent graph1 = new Intent(this, TempGraph.class);
         startActivity(graph1);
     }
+
+    public void startUVGraph(View view) {
+
+    }
 }
 
