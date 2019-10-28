@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -57,6 +58,8 @@ public class GraphViewActivity extends AppCompatActivity {
         graphView = findViewById(R.id.graph);
 
         dbRef = FirebaseDatabase.getInstance().getReference("esp8266airsensor");
+
+        Toast.makeText(GraphViewActivity.this,"Firebase Connection Success", Toast.LENGTH_LONG).show();
 
         sensorDataList = new ArrayList<>();
 
@@ -165,6 +168,7 @@ public class GraphViewActivity extends AppCompatActivity {
         graphUpdater = new Runnable() {
             @Override
             public void run() {
+                Log.d("update", "attempting to update graph");
                 updatedLineGraph.updateGraph();
                 handler.postDelayed(this, updatedLineGraph.updateInterval);
             }

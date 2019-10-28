@@ -22,19 +22,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    DatabaseReference databaseSensor;
-    GraphView graphView;
-    List<SensorData> sensorDataList;
+//    DatabaseReference databaseSensor;
+//    GraphView graphView;
+//    List<SensorData> sensorDataList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setTheme(R.style.AppTheme);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toast.makeText(MainActivity.this,"Firebase Connection Success", Toast.LENGTH_LONG).show();
-        sensorDataList = new ArrayList<>();
-        databaseSensor = FirebaseDatabase.getInstance().getReference("esp8266airsensor");
-        graphView = (GraphView)findViewById(R.id.graph);
+//        Toast.makeText(MainActivity.this,"Firebase Connection Success", Toast.LENGTH_LONG).show();
+//        sensorDataList = new ArrayList<>();
+//        databaseSensor = FirebaseDatabase.getInstance().getReference("esp8266airsensor");
+//        graphView = (GraphView)findViewById(R.id.graph);
 
     }
 
@@ -42,23 +42,23 @@ public class MainActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
-        databaseSensor.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                sensorDataList.clear();
-                for(DataSnapshot sensorSnapshot : dataSnapshot.getChildren()){
-//                    SensorData sensorData = sensorSnapshot.getValue(SensorData.class);
-
-//                    sensorDataList.add(sensorData);
-                }
-                SensorList adapter = new SensorList(MainActivity.this, sensorDataList);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
+//        databaseSensor.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                sensorDataList.clear();
+//                for(DataSnapshot sensorSnapshot : dataSnapshot.getChildren()){
+////                    SensorData sensorData = sensorSnapshot.getValue(SensorData.class);
+//
+////                    sensorDataList.add(sensorData);
+//                }
+//                SensorList adapter = new SensorList(MainActivity.this, sensorDataList);
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//            }
+//        });
     }
 
     public void startTemp(View view) {
